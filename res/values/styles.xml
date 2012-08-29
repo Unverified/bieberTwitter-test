@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="headerText" parent="@style/mainText">
+        
+    </style>
+
+    <style name="mainText" parent="@android:style/Widget.DeviceDefault.TextView">
+        
+    </style>    
+
+    <style name="footerText" parent="@style/mainText">
+        
+    </style>
+    
+</resources>
