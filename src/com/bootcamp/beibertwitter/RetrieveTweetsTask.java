@@ -28,15 +28,17 @@ public class RetrieveTweetsTask extends AsyncTask<String, Void, ArrayList<Tweet>
 		this.context = context;
 		this.view = view;
 		waitQueue = view.findViewById(R.id.filterWait);
-		// waitQueue.setVisibility(0);
 	}
 
 	@Override
-	protected ArrayList<Tweet> doInBackground(String... searchTerms) {
-
+	protected ArrayList<Tweet> doInBackground(String... searchTerms) {		
 		InputStream is = null;
 		JSONObject oTweets = null;
 		JSONArray aTweets = null;
+		
+		if (waitQueue != null){			
+			waitQueue.setVisibility(View.VISIBLE);
+		}
 
 		String url = "http://search.twitter.com/search.json?q=@"
 				+ searchTerms[0];
@@ -103,9 +105,10 @@ public class RetrieveTweetsTask extends AsyncTask<String, Void, ArrayList<Tweet>
 		super.onPostExecute(result);
 
 		ListView listView = (ListView) view;
-		listView.setAdapter(new TweetAdapter(context, R.layout.tweet_row,
-				result));
-		waitQueue = ((View) view.getParent()).findViewById(R.id.filterWait);
-		waitQueue.setVisibility(1);
+		listView.setAdapter(new TweetAdapter(context, R.layout.tweet_row, result));
+		
+		if(waitQueue != null){			
+			waitQueue.setVisibility(View.GONE);
+		}
 	}
 }
