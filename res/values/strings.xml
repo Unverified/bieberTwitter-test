@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, BieberTwitterActivity!</string>
+    <string name="app_name">BieberTwitter</string>
+    <string name="displayPic">Profile Display Image</string>
+</resources>
