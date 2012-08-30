@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
     <style name="headerText" parent="@style/mainText">
-        
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">marquee</item>
     </style>
 
     <style name="mainText" parent="@android:style/Widget.DeviceDefault.TextView">
-        
-    </style>    
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/tertiary_text_light</item>
+    </style>
 
     <style name="footerText" parent="@style/mainText">
-        
+        <item name="android:textSize">10sp</item>
     </style>
-    
+
 </resources>
