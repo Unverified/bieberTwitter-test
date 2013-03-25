@@ -1,8 +1,12 @@
 package com.bootcamp.beibertwitter;
 
+import java.io.NotActiveException;
 import java.util.ArrayList;
 
+import com.bootcamp.beibertwitter.ImageCacher.OnImageLoadedListener;
+
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,13 +46,22 @@ public class TweetAdapter extends ArrayAdapter<Tweet> {
 			if (postTime != null)
 				postTime.setText(tweet.sCreateTime);
 			if (userImg != null) {
-				if (tweet.imgFetched) {
-					if (tweet.bitUser != null)
-					userImg.setImageBitmap(tweet.bitUser);
+				Bitmap profile;
+				try {
+					profile = ImageCacher.getBitmap(tweet.sImgUrl, new OnImageLoadedListener() {
+						public void onImageLoadedListener(Bitmap bitmap) {
+							notifyDataSetChanged();
+						}
+					});
+				} catch (NotActiveException e) {
+					profile = null;
+					e.printStackTrace();
+				}
+				
+				if(profile != null){
+					userImg.setImageBitmap(profile);
 				} else {
-					RetrieveImgTask getImage = new RetrieveImgTask(tweet, this);
-					getImage.execute();
-					tweet.imgFetched = true;
+					userImg.setImageResource(R.drawable.icon);
 				}
 			}
 

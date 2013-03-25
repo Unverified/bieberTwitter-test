@@ -26,10 +26,11 @@ public class BeiberTwitterActivity extends Activity {
 			created = true;
 			super.onCreate(savedInstanceState);
 			setContentView(R.layout.main);
-			
+
 			listView = (ListView) findViewById(R.id.tweetFeed);
 			searchButton = (Button) findViewById(R.id.filterButton);
 			progressBar = (ProgressBar) findViewById(R.id.filterWait);
+			ImageCacher.instanceCache(0);
 
 			setTwitterLookup((String) tweetSearch);
 		}
@@ -48,7 +49,7 @@ public class BeiberTwitterActivity extends Activity {
 				.setTitle("Update Tag")
 				.setMessage("Get twitter feed with what tag?")
 				.setView(textEdit)
-				.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+				.setPositiveButton("Search", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int whichButton) {
 						tweetSearch = textEdit.getText().toString();
 						setTwitterLookup(tweetSearch);
@@ -61,7 +62,6 @@ public class BeiberTwitterActivity extends Activity {
 							}
 						}).create();
 		tweetDlog.show();
-		//setTwitterLookup(tweetSearch);
 	}
 
 }

@@ -16,7 +16,6 @@ public class feedContentProvider extends ContentProvider {
 	private static final String DB_Authority = "com.bootcamp.beibertwitter";
 
 	private static class DBHelper extends SQLiteOpenHelper {
-
 		public DBHelper(Context context) {
 			super(context, DB_NAME, null, DB_VER);
 		}
