@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import android.graphics.Bitmap;
 import android.util.Log;
 
 public class Tweet {
@@ -12,9 +11,6 @@ public class Tweet {
 	public String sCreateTime;
 	public String sPoster;
 	public String sImgUrl;
-	
-	public Bitmap bitUser = null;
-	public boolean imgFetched = false;
 	
 	public Tweet(String content, String createTime, String poster, String imgUrl) {
 		try {
